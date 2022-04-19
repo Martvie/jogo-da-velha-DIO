@@ -9,6 +9,7 @@ function selectSquare(id){
     let square = document.getElementById(id)
 
     square.innerHTML = player
+    square.style.color = '#000'
 
     if(player === 'X'){
         player = 'O'

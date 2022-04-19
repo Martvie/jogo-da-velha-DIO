@@ -6,15 +6,20 @@ body {
     width: 50px;
     height: 50px;
     background-color: #EEE;
+    color: #EEE;
+
     display: inline-block;
     padding: 40px;
-    margin: 5px;
+    margin: 10px;
+
     font-size: 60px;
+    text-align: center;
 }
 
 .square:hover, .button:hover {
     cursor: pointer;
     background-color: rgb(173, 173, 173);
+    color: rgb(173, 173, 173);
 }
 
 .player, .winner {
