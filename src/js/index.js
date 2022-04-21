@@ -1,6 +1,9 @@
 var player, winner = null
 var actualplayer =  document.getElementById('select-player')
+var playerWinner = document.getElementById('winner-player')
 var allsquares = document.getElementsByClassName('square')
+
+console.log(playerWinner)
 
 let squares = document.querySelectorAll('.square')
 
@@ -36,6 +39,8 @@ function verifyWinner(square1, square2, square3){
         endGame = true
 
         changeColor(square1, square2, square3)
+        
+        gameWinner(square1)
     }
 }
 
@@ -43,4 +48,13 @@ function changeColor(square1, square2, square3){
     square1.style.backgroundColor = '#0e0'
     square2.style.backgroundColor = '#0e0'
     square3.style.backgroundColor = '#0e0'
+}
+
+function gameWinner(square) {
+    winner = square.innerHTML
+
+    winnerArea = document.getElementById('winner-area')
+
+    winnerArea.innerHTML = 'O vencedor é:'
+    playerWinner.innerHTML = winner
 }
