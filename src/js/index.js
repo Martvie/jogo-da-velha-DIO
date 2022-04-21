@@ -1,11 +1,9 @@
 var player, winner = null
 var actualplayer =  document.getElementById('select-player')
 var playerWinner = document.getElementById('winner-player')
-var allsquares = document.getElementsByClassName('square')
+var squares = document.getElementsByClassName('square')
 
 console.log(playerWinner)
-
-let squares = document.querySelectorAll('.square')
 
 changePlayer('X')
 
@@ -22,9 +20,7 @@ function selectSquare(id){
     }
 
     changePlayer(player)
-    verifyWinner(allsquares[0], allsquares[1], allsquares[2])
-
-
+    verifyWinner(squares)
 }
 
 function changePlayer(value) {
@@ -32,15 +28,39 @@ function changePlayer(value) {
     actualplayer.innerHTML = player
 }
 
-function verifyWinner(square1, square2, square3){
-    endGame = false
+function verifyWinner(squares){
 
-    if (square1.innerHTML != '.' && square1.innerHTML === square2.innerHTML && square2.innerHTML === square3.innerHTML){
-        endGame = true
-
-        changeColor(square1, square2, square3)
-        
-        gameWinner(square1)
+    if (checkSequence(squares[0], squares[1], squares[2])){
+        changeColor(squares[0], squares[1], squares[2])
+        gameWinner(squares[0])
+        return
+    } else if (checkSequence(squares[3], squares[4], squares[5])){
+        changeColor(squares[3], squares[4], squares[5])
+        gameWinner(squares[0])
+        return
+    } else if (checkSequence(squares[6], squares[7], squares[8])){
+        changeColor(squares[6], squares[7], squares[8])
+        gameWinner(squares[6])
+        return
+    } else if (checkSequence(squares[0], squares[3], squares[6])){
+        changeColor(squares[0], squares[3], squares[6])
+        gameWinner(squares[0])
+        return
+    } else if (checkSequence(squares[1], squares[4], squares[7])){
+        changeColor(squares[1], squares[4], squares[7])
+        gameWinner(squares[1])
+        return
+    } else if (checkSequence(squares[2], squares[5], squares[8])){
+        changeColor(squares[2], squares[5], squares[8])
+        gameWinner(squares[2])
+        return
+    } else if (checkSequence(squares[0], squares[4], squares[8])){
+        changeColor(squares[0], squares[4], squares[8])
+        gameWinner(squares[0])
+        return
+    } else if (checkSequence(squares[6], squares[4], squares[2])){
+        changeColor(squares[6], squares[4], squares[2])
+        gameWinner(squares[6])
     }
 }
 
@@ -57,4 +77,10 @@ function gameWinner(square) {
 
     winnerArea.innerHTML = 'O vencedor é:'
     playerWinner.innerHTML = winner
+}
+
+function checkSequence (square1, square2, square3) {
+    if (square1.innerHTML != '.' && square1.innerHTML === square2.innerHTML && square2.innerHTML === square3.innerHTML){
+        return true
+    }
 }
