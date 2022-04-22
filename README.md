@@ -1,14 +1,31 @@
 # Jogo da Velha-DIO
 
-Projeto do conhecido jogo da cobrinha em JavaScript, o projeto até o momento só pode ser executada no desktop e você pode usar as setas ou as teclas WASD para mover a cobra! O jogo irá iniciar pausado, e só começará quando você der um comando de movimento.
+Projeto do Jogo da velha para você jogar no browser!
+O jogo foi pensado para dois jogadores se enfrentarem, você pode clicar no link abaixo e jogar ele imediatamente, o jogo também foi preparado para funcionar no mobile via media queries!
 
-[Site Do Projeto](https://martvie.github.io/snake-game/)
+## Sobre o desenvolvimento do Projeto
+Alguns dos diferenciais desse para o projeto mostrado pelo especialista na dio são.
+ - Uso de event listener para facilitar o desenvolvimento e manutenção do código
+ - Redução do número de variáveis ao usar o conceito de arrays
+ - Responsividade considerando dispositivos mobile
+
+
+[Site Do Projeto](https://martvie.github.io/jogo-da-velha-DIO/)
 
 ## imagens do projeto
+### Versão Desktop
 <p align="center">
-<img src="./src/images/Animação.gif">
+<img src="./src/images/desktop-game.gif">
+</p>
+
+### Versão Mobile
+
+<p align="center">
+<img src="./src/images/mobile.gif">
 </p>
 
 ## Tecnologias utilizadas
 
 * JavaScript
+* HTML
+* CSS
