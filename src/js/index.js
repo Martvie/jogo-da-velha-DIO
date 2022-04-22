@@ -2,34 +2,33 @@ var player, winner = null
 var actualplayer = document.getElementById('select-player')
 var playerWinner = document.getElementById('winner-player')
 var winnerArea = document.getElementById('winner-area')
-var squares = document.getElementsByClassName('square')
-
-console.log(playerWinner)
+var squares = document.querySelectorAll('.square')
 
 changePlayer('X')
 
-function selectSquare(id) {
-    let square = document.getElementById(id)
+squares.forEach(square => {
+    square.addEventListener("click",function(){
 
-    if (winner != null) {
-        return
+        if (winner != null) {
+            return
+        }
+    
+        if (square.innerHTML === '.'){
+    
+        square.innerHTML = player
+        square.style.color = '#000'
+    
+        if (player === 'X') {
+            player = 'O'
+        } else {
+            player = 'X'
+        }
+    
+        changePlayer(player)
+        verifyWinner(squares)
     }
-
-    if (square.innerHTML === '.'){
-
-    square.innerHTML = player
-    square.style.color = '#000'
-
-    if (player === 'X') {
-        player = 'O'
-    } else {
-        player = 'X'
-    }
-
-    changePlayer(player)
-    verifyWinner(squares)
-}
-}
+    })
+})
 
 function changePlayer(value) {
     player = value
@@ -95,10 +94,11 @@ function restartGame() {
     winner = null
     winnerArea.innerHTML = '' 
     playerWinner.innerHTML = ''
-
-    for (let i = 0; i <= squares.length; i++){
-        squares[i].innerHTML = '.'
-        squares[i].style.backgroundColor = '#EEE'
-        squares[i].style.color = '#EEE'
-    }
+    
+    squares.forEach(square => {
+        square.innerHTML = '.'
+        square.style.backgroundColor = '#EEE'
+        square.style.color = '#EEE'
+    })
+        
 }
