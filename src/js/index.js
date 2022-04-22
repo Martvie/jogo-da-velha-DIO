@@ -93,7 +93,8 @@ function checkSequence(square1, square2, square3) {
 
 function restartGame() {
     winner = null
-    winnerArea.innerHTML , playerWinner.innerHTML = ''
+    winnerArea.innerHTML = '' 
+    playerWinner.innerHTML = ''
 
     for (let i = 0; i <= squares.length; i++){
         squares[i].innerHTML = '.'
