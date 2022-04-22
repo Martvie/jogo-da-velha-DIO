@@ -7,26 +7,26 @@ var squares = document.querySelectorAll('.square')
 changePlayer('X')
 
 squares.forEach(square => {
-    square.addEventListener("click",function(){
+    square.addEventListener("click", function () {
 
         if (winner != null) {
             return
         }
-    
-        if (square.innerHTML === '.'){
-    
-        square.innerHTML = player
-        square.style.color = '#000'
-    
-        if (player === 'X') {
-            player = 'O'
-        } else {
-            player = 'X'
+
+        if (square.innerHTML === '.') {
+
+            square.innerHTML = player
+            square.style.color = '#000'
+
+            if (player === 'X') {
+                player = 'O'
+            } else {
+                player = 'X'
+            }
+
+            changePlayer(player)
+            verifyWinner(squares)
         }
-    
-        changePlayer(player)
-        verifyWinner(squares)
-    }
     })
 })
 
@@ -36,36 +36,49 @@ function changePlayer(value) {
 }
 
 function verifyWinner(squares) {
+    // função responsavel por verificar se algum jogador completou uma sequencia e venceu
 
+    // Verificação linhas Horizontais
     if (checkSequence(squares[0], squares[1], squares[2])) {
         changeColor(squares[0], squares[1], squares[2])
         gameWinner(squares[0])
         return
-    } else if (checkSequence(squares[3], squares[4], squares[5])) {
+    }
+    if (checkSequence(squares[3], squares[4], squares[5])) {
         changeColor(squares[3], squares[4], squares[5])
         gameWinner(squares[0])
         return
-    } else if (checkSequence(squares[6], squares[7], squares[8])) {
+    }
+    if (checkSequence(squares[6], squares[7], squares[8])) {
         changeColor(squares[6], squares[7], squares[8])
         gameWinner(squares[6])
         return
-    } else if (checkSequence(squares[0], squares[3], squares[6])) {
+    }
+
+    // Verificação linhas Verticais
+    if (checkSequence(squares[0], squares[3], squares[6])) {
         changeColor(squares[0], squares[3], squares[6])
         gameWinner(squares[0])
         return
-    } else if (checkSequence(squares[1], squares[4], squares[7])) {
+    }
+    if (checkSequence(squares[1], squares[4], squares[7])) {
         changeColor(squares[1], squares[4], squares[7])
         gameWinner(squares[1])
         return
-    } else if (checkSequence(squares[2], squares[5], squares[8])) {
+    }
+    if (checkSequence(squares[2], squares[5], squares[8])) {
         changeColor(squares[2], squares[5], squares[8])
         gameWinner(squares[2])
         return
-    } else if (checkSequence(squares[0], squares[4], squares[8])) {
+    }
+
+    // Verificação linhas Diagonais
+    if (checkSequence(squares[0], squares[4], squares[8])) {
         changeColor(squares[0], squares[4], squares[8])
         gameWinner(squares[0])
         return
-    } else if (checkSequence(squares[6], squares[4], squares[2])) {
+    }
+    if (checkSequence(squares[6], squares[4], squares[2])) {
         changeColor(squares[6], squares[4], squares[2])
         gameWinner(squares[6])
     }
@@ -92,13 +105,13 @@ function checkSequence(square1, square2, square3) {
 
 function restartGame() {
     winner = null
-    winnerArea.innerHTML = '' 
+    winnerArea.innerHTML = ''
     playerWinner.innerHTML = ''
-    
+
     squares.forEach(square => {
         square.innerHTML = '.'
         square.style.backgroundColor = '#EEE'
         square.style.color = '#EEE'
     })
-        
+
 }
